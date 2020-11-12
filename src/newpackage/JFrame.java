@@ -34,10 +34,6 @@ public class JFrame extends javax.swing.JFrame {
         return modelo1;
     }
     
-    private void limpiarTabla() {
-       DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-       model.setRowCount(0);
-}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -60,7 +56,6 @@ public class JFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,13 +172,6 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Limpiar tabla");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -194,8 +182,6 @@ public class JFrame extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jButton1)
-                        .addGap(87, 87, 87)
-                        .addComponent(jButton3)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 864, Short.MAX_VALUE)
@@ -207,9 +193,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3))
+                .addComponent(jButton1)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -245,13 +229,15 @@ public class JFrame extends javax.swing.JFrame {
                 
         try {   
             
-            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/ntbr", "root", "");
+            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/prueba", "root", "");
 
             Connection c = myconexion.connect();
 
             Statement s = c.createStatement();
 
             ResultSet resultados = s.executeQuery("SELECT p.* FROM persona p");
+            
+            listado.clear();
 
             while (resultados.next()) {
 
@@ -269,7 +255,7 @@ public class JFrame extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try {
 
-            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/ntbr", "root", "");
+            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/prueba", "root", "");
 
             Connection c = myconexion.connect();
 
@@ -288,17 +274,12 @@ public class JFrame extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println("error!!!  " + ex);
         }
-        
         limpiarTextos();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        limpiarTabla();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -345,7 +326,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
