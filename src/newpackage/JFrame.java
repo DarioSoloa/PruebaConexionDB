@@ -83,6 +83,7 @@ public class JFrame extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,6 +178,8 @@ public class JFrame extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Agregar", jPanel1);
+
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Listado de personas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12))); // NOI18N
 
         jTable1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -287,7 +290,7 @@ public class JFrame extends javax.swing.JFrame {
         });
 
         jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel12.setText("Seleccione la fila a modificar");
+        jLabel12.setText("Seleccione la fila a modificar o eliminar");
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel13.setText("ID");
@@ -295,6 +298,13 @@ public class JFrame extends javax.swing.JFrame {
         txtId.setEditable(false);
         txtId.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         txtId.setEnabled(false);
+
+        jButton5.setText("Eliminar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -329,11 +339,13 @@ public class JFrame extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jButton3)
+                                .addGap(51, 51, 51)
+                                .addComponent(jButton5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)))))
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -371,11 +383,12 @@ public class JFrame extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton5))
                 .addGap(32, 32, 32))
         );
 
-        jTabbedPane1.addTab("Modificar", jPanel3);
+        jTabbedPane1.addTab("Modificar / Eliminar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -544,6 +557,29 @@ public class JFrame extends javax.swing.JFrame {
        limpiarTextos2();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        try {
+
+            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/prueba", "root", "");
+
+            Connection c = myconexion.connect();
+
+            Statement s = c.createStatement();
+            
+            String query4 = "DELETE FROM persona WHERE id="+id;
+            
+            s.executeUpdate(query4);
+
+            JOptionPane.showMessageDialog(null, "Persona eliminada correctamente");
+
+            myconexion.disconnect();
+
+        } catch (SQLException ex) {
+            System.out.println("Error!!!  " + ex);
+        } 
+       limpiarTextos2();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -591,6 +627,7 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
