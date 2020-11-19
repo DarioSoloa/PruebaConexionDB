@@ -28,8 +28,10 @@ CREATE TABLE `persona` (
   `dni` int(8) DEFAULT NULL,
   `nombre` varchar(45) DEFAULT NULL,
   `apellido` varchar(45) DEFAULT NULL,
-  `email` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `email` varchar(45) DEFAULT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +40,7 @@ CREATE TABLE `persona` (
 
 LOCK TABLES `persona` WRITE;
 /*!40000 ALTER TABLE `persona` DISABLE KEYS */;
-INSERT INTO `persona` VALUES (37716818,'Dario','Soloa','soloa.dario982@gmail.com'),(12345678,'nombre1','apellido1','email1'),(34566745,'nombre2','apellido2','email2'),(74563456,'nombre3','apellido3','email3');
+INSERT INTO `persona` VALUES (37716818,'Dario','Soloa','soloa.dario982@gmail.com',1),(12345678,'nombre1','apellido1','email1',2),(34566745,'nombre2','apellido2','email2',3),(74563456,'nombre3','apellido3','email3',4),(36343223,'nombre4','apellido4','email4',5),(14821105,'Raul Celestino','Soloa','notiene',6);
 /*!40000 ALTER TABLE `persona` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -59,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-12 21:15:05
+-- Dump completed on 2020-11-19  5:47:19
