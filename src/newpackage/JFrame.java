@@ -12,23 +12,33 @@ import javax.swing.table.DefaultTableModel;
 public class JFrame extends javax.swing.JFrame {
 
     public ArrayList<Persona> listado = new ArrayList<>();
+    
+    int id;
 
     public JFrame() {
         initComponents();
     }
     
-    private void limpiarTextos(){
+    private void limpiarTextos1(){
         dni.setText(null);
         nombre.setText(null);
         apellido.setText(null);
         email.setText(null);
     }
     
+    private void limpiarTextos2(){
+        txtId.setText(null);
+        txtDni.setText(null);
+        txtNombre.setText(null);
+        txtApellido.setText(null);
+        txtEmail.setText(null);
+    }
+    
     private DefaultTableModel cargarTabla(){
-        String columnas[] = {"DNI", "Nombre", "Apellido", "Email"};
+        String columnas[] = {"ID","DNI", "Nombre", "Apellido", "Email"};
             DefaultTableModel modelo1 = new javax.swing.table.DefaultTableModel(columnas, 0);
             for (int i = 0;i < listado.size();i++) {
-                Object[] fila = {listado.get(i).getDni(), listado.get(i).getNombre(), listado.get(i).getApellido(), listado.get(i).getEmail()};
+                Object[] fila = {listado.get(i).getId(),listado.get(i).getDni(), listado.get(i).getNombre(), listado.get(i).getApellido(), listado.get(i).getEmail()};
                 modelo1.addRow(fila);
             }
         return modelo1;
@@ -56,6 +66,23 @@ public class JFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtDni = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        txtId = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,7 +192,7 @@ public class JFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setText("Mostrar datos");
+        jButton1.setText("Actualizar tabla");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -197,7 +224,158 @@ public class JFrame extends javax.swing.JFrame {
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Consultar", jPanel2);
+        jTabbedPane1.addTab("Mostrar", jPanel2);
+
+        jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel7.setText("Datos seleccionados");
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("DNI");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Nombre");
+
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setText("Apellido");
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel11.setText("Email");
+
+        jButton3.setText("Modificar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane2MouseClicked(evt);
+            }
+        });
+
+        jTable2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        jButton4.setText("Actualizar tabla");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        jLabel12.setText("Seleccione la fila a modificar");
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel13.setText("ID");
+
+        txtId.setEditable(false);
+        txtId.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        txtId.setEnabled(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtApellido)
+                                    .addComponent(txtNombre)
+                                    .addComponent(txtDni)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel10)
+                                            .addComponent(jLabel11)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jLabel13)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jButton3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13)
+                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 23, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 362, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addGap(32, 32, 32))
+        );
+
+        jTabbedPane1.addTab("Modificar", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -226,9 +404,9 @@ public class JFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                
-        try {   
-            
+
+        try {
+
             ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/prueba", "root", "");
 
             Connection c = myconexion.connect();
@@ -236,20 +414,22 @@ public class JFrame extends javax.swing.JFrame {
             Statement s = c.createStatement();
 
             ResultSet resultados = s.executeQuery("SELECT p.* FROM persona p");
-            
+
             listado.clear();
 
             while (resultados.next()) {
 
-                Persona a = new Persona(resultados.getString("dni"),resultados.getString("nombre"),resultados.getString("apellido"),resultados.getString("email"));
+                Persona a = new Persona(resultados.getInt("id"),resultados.getString("dni"),resultados.getString("nombre"),resultados.getString("apellido"),resultados.getString("email"));
                 listado.add(a);
             }
 
-        } catch (SQLException ex) {
-            System.out.println("error!!!  " + ex);
-        }
-        jTable1.setModel(cargarTabla());
+            myconexion.disconnect();
 
+        } catch (SQLException ex) {
+            System.out.println("Error!!!  " + ex);
+        }
+
+        jTable1.setModel(cargarTabla());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -260,7 +440,7 @@ public class JFrame extends javax.swing.JFrame {
             Connection c = myconexion.connect();
 
             Statement s = c.createStatement();
-            
+
             String dni1 = dni.getText();
             String nombre1 = nombre.getText();
             String apellido1 = apellido.getText();
@@ -268,18 +448,101 @@ public class JFrame extends javax.swing.JFrame {
             String query = "INSERT INTO persona(dni, nombre, apellido, email) values ("+dni1+",'"+nombre1+"','"+apellido1+"','"+email1+"')";
 
             s.executeUpdate(query);
-            
+
             JOptionPane.showMessageDialog(null, "Persona agregada correctamente");
 
+            myconexion.disconnect();
+
         } catch (SQLException ex) {
-            System.out.println("error!!!  " + ex);
+            System.out.println("Error!!!  " + ex);
         }
-        limpiarTextos();
+        limpiarTextos1();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nombreActionPerformed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try {
+
+            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/prueba", "root", "");
+
+            Connection c = myconexion.connect();
+
+            Statement s = c.createStatement();
+
+            ResultSet resultados = s.executeQuery("SELECT p.* FROM persona p");
+
+            listado.clear();
+
+            while (resultados.next()) {
+
+                Persona a = new Persona(resultados.getInt("id"),resultados.getString("dni"),resultados.getString("nombre"),resultados.getString("apellido"),resultados.getString("email"));
+                listado.add(a);
+            }
+
+            myconexion.disconnect();
+
+        } catch (SQLException ex) {
+            System.out.println("Error!!!  " + ex);
+        }
+
+        jTable2.setModel(cargarTabla());
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
+        
+    }//GEN-LAST:event_jScrollPane2MouseClicked
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        int fila = jTable2.getSelectedRow();
+        if(fila == -1){
+            JOptionPane.showMessageDialog(null, "Usuario no seleccionado");
+        }else{
+            id = Integer.parseInt((String)jTable2.getValueAt(fila, 0).toString());
+            String dni2 = (String)jTable2.getValueAt(fila, 1);
+            String nombre2 = (String)jTable2.getValueAt(fila, 2);
+            String apellido2 = (String)jTable2.getValueAt(fila, 3);
+            String email2 = (String)jTable2.getValueAt(fila, 4);
+            txtId.setText(""+id);
+            txtDni.setText(dni2);
+            txtNombre.setText(nombre2);
+            txtApellido.setText(apellido2);
+            txtEmail.setText(email2);
+        }
+    }//GEN-LAST:event_jTable2MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       try {
+
+            ConexionDB myconexion = new ConexionDB("jdbc:mysql://localhost:3306/prueba", "root", "");
+
+            Connection c = myconexion.connect();
+
+            Statement s = c.createStatement();
+            
+            String dni3 = txtDni.getText();
+            String nombre3 = txtNombre.getText();
+            String apellido3 = txtApellido.getText();
+            String email3 = txtEmail.getText();
+            String query3 = "UPDATE persona SET dni='"+dni3+"', nombre='"+nombre3+"', apellido='"+apellido3+"', email='"+email3+"' WHERE id="+id;
+
+            s.executeUpdate(query3);
+
+            JOptionPane.showMessageDialog(null, "Persona modificada correctamente");
+
+            myconexion.disconnect();
+
+        } catch (SQLException ex) {
+            System.out.println("Error!!!  " + ex);
+        } 
+       limpiarTextos2();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,17 +589,34 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField nombre;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

@@ -70,7 +70,15 @@ public class ConexionDB {
                     break;
             }   
         } finally{
+            System.out.println("Conexion iniciada");
             return this.conexion;
+        }
+    }
+    
+    public void disconnect(){
+        conexion = null;
+        if (conexion == null) {
+            System.out.println("Conexion terminada");
         }
     }
         
